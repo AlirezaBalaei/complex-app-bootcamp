@@ -6,6 +6,7 @@ exports.mustBeLoggedIn = function (req, res, next) {
   if (req.session.user) {
     next()
   } else {
+    // req.flash adds data to session, so it need to be saved after
     req.flash("errors", "You must be logged in to perform that action")
     req.session.save(function () {
       res.redirect("/")
