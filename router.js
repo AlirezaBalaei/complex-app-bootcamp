@@ -8,6 +8,11 @@ router.get("/", userController.home)
 router.post("/register", userController.register)
 router.post("/login", userController.login)
 router.post("/logout", userController.logout)
+router.post(
+  "/create-post",
+  userController.mustBeLoggedIn,
+  postController.create
+)
 
 // Post Related Routs down blow
 router.get(
