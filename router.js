@@ -8,11 +8,6 @@ router.get("/", userController.home)
 router.post("/register", userController.register)
 router.post("/login", userController.login)
 router.post("/logout", userController.logout)
-router.post(
-  "/create-post",
-  userController.mustBeLoggedIn,
-  postController.create
-)
 
 // Post Related Routs down blow
 router.get(
@@ -20,4 +15,10 @@ router.get(
   userController.mustBeLoggedIn,
   postController.viewCreateScreen
 )
+router.post(
+  "/create-post",
+  userController.mustBeLoggedIn,
+  postController.create
+)
+router.get("/post/:id", postController.viewSingle)
 module.exports = router
